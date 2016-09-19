@@ -59,6 +59,7 @@ app.post('/addTreats', urlencodedParser, function(req, res) {
     console.log('addTreats route hit:', req.body);
     //create DB data
     var treat = req.body.treat;
+    var description = req.body.description;
     var pic = req.body.pic;
     pg.connect(connectionString, function(err, client, done) {
         //if err
@@ -67,7 +68,7 @@ app.post('/addTreats', urlencodedParser, function(req, res) {
         } // successful conncetions
         else {
             console.log("conncected to the db");
-            //make a client var
+            //make a client
             client.query("INSERT INTO treats) VAlUES($1, $2, $3);" [treatname, description, pic]);
             console.log("treat added to DB");
             done();
